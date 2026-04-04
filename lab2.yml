@@ -1,0 +1,22 @@
+---
+- name: Lab 2 - PUSH OSPF TO ROUTER R1
+  hosts: routers
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    - name: 1. Config Loopback 0 and assign IP address
+      cisco.ios.ios_config:
+        parents: interface Loopback0
+        lines:
+          - ip address 1.1.1.1 255.255.255.255
+
+    - name: 2. config OSPF
+      cisco.ios.ios_config:
+        parents: router ospf 1
+        lines:
+          - network 1.1.1.1 0.0.0.0 area 0
+
+    - name: 3. Save configuration (write memory)
+      cisco.ios.ios_config:
+        save_when: modified
