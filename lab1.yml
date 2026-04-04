@@ -1,0 +1,15 @@
+---
+- name: Lab 1 - Thu nghiem lay thong tin Router R1
+  hosts: routers
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    - name: Chay lenh show ip interface brief
+      cisco.ios.ios_command:
+        commands: show ip int br
+      register: ket_qua
+
+    - name: In ket qua ra man hinh
+      debug:
+        var: ket_qua.stdout_lines
