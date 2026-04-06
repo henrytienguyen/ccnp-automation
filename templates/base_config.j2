@@ -1,0 +1,14 @@
+! Template for basic router configuration
+hostname {{ device_name }}
+!
+banner motd ^C
+=============================================
+WARNING:
+This is Router {{ device_name }}.
+This device is managed automatically by Ansible!
+Any manual configuration changes will be logged.
+=============================================
+^C
+!
+ntp server 8.8.8.8
+!

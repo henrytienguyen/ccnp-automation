@@ -1,3 +1,5 @@
 ---
 my_loopback_ip: 22.22.22.22
 description: "LOOPBACK ROUTER R2"
+p2p_ip: 10.1.12.2
+device_name: "R2-CORE-HN"

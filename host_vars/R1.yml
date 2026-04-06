@@ -1,3 +1,5 @@
 ---
 my_loopback_ip: 11.11.11.11
 description: "LOOPBACK ROUTER R1"
+p2p_ip: 10.1.12.1
+device_name: "R1-CORE-HCM"

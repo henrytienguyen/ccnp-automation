@@ -1,0 +1,20 @@
+---
+- name: Lab 6 - Config connection P2P and OSPF
+  hosts: routers
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    - name: 1. No shut G0/1 and assign IP Data Plane
+      cisco.ios.ios_config:
+        parents: interface G0/1
+        lines:
+          - ip address {{ p2p_ip }} 255.255.255.0
+          - no shutdown
+
+    - name: 2. Activate OSPF and advertise networks
+      cisco.ios.ios_config:
+        parents: router ospf 1
+        lines:
+          - network 10.1.12.0 0.0.0.255 area 0
+          - network {{ my_loopback_ip }} 0.0.0.0 area 0

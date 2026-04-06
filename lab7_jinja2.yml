@@ -1,0 +1,10 @@
+---
+- name: Lab 7 - Using Jinja2 Template
+  hosts: routers
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    - name: Apply basic configuration from Jinja2 template
+      cisco.ios.ios_config:
+        src: templates/base_config.j2
