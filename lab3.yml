@@ -1,0 +1,17 @@
+---
+- name: Lab 3 - Create VLANs on Switch SW1
+  hosts: switches
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+    - name: Create VLANs same time by a loop
+      cisco.ios.ios_config:
+        parents: vlan {{ item.id }}
+        lines:
+          - name {{ item.vlan_name }}
+      loop:
+        - { id: 10, vlan_name: ACCOUNTING_DEPT }
+        - { id: 20, vlan_name: HR_DEPT }
+        - { id: 30, vlan_name: IT_DEPT }           
+        - { id: 100, vlan_name: FOR_TEST } 
