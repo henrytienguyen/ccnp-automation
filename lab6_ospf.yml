@@ -18,3 +18,4 @@
         lines:
           - network 10.1.12.0 0.0.0.255 area 0
           - network {{ my_loopback_ip }} 0.0.0.0 area 0
+        save_when: modified

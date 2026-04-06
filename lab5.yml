@@ -11,3 +11,4 @@
         lines:
           - description {{ description }}
           - ip address {{ my_loopback_ip }} 255.255.255.255
+        save_when: modified
